@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="de" data-lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-de="Kontakt · EchazTec SpeakUp" data-en="Contact · EchazTec SpeakUp">Kontakt · EchazTec SpeakUp</title>
+  <meta name="description" content="Kontakt zu EchazTec: Erstgespräch, Pilot-Angebot oder Plattform-Demo für SpeakUp.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+  <script>try{var l=new URLSearchParams(location.search).get("lang")||localStorage.getItem("echaz-lang");if(l==="en"||l==="de"){document.documentElement.setAttribute("data-lang",l);document.documentElement.lang=l}}catch(e){}</script>
+</head>
+<body data-page="contact">
+
+<main>
+  <section class="hero" style="padding-bottom:40px">
+    <div class="container narrow">
+      <span class="eyebrow" lang="de">Kontakt</span><span class="eyebrow" lang="en">Contact</span>
+      <h1 lang="de">Lassen Sie uns <span class="accent">sprechen.</span></h1>
+      <h1 lang="en">Let's <span class="accent">talk.</span></h1>
+      <p class="lead" lang="de">Erstgespräch, Pilot-Angebot oder eine Führung durch die Plattform. Wir antworten innerhalb eines Werktags.</p>
+      <p class="lead" lang="en">A first call, a pilot proposal or a tour of the platform. We reply within one working day.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container narrow">
+      <form class="panel" id="contact" novalidate>
+        <div class="row-2">
+          <div><label for="c-name"><span lang="de">Name</span><span lang="en">Name</span></label><input type="text" id="c-name" autocomplete="name" required></div>
+          <div><label for="c-email"><span lang="de">E-Mail</span><span lang="en">Email</span></label><input type="email" id="c-email" autocomplete="email" required></div>
+        </div>
+        <div class="row-2">
+          <div><label for="c-company"><span lang="de">Unternehmen</span><span lang="en">Company</span></label><input type="text" id="c-company" autocomplete="organization"></div>
+          <div><label for="c-topic"><span lang="de">Anliegen</span><span lang="en">Topic</span></label>
+            <select id="c-topic">
+              <option value="discovery" data-de="Erstgespräch (30 Min.)" data-en="First call (30 min)">Erstgespräch (30 Min.)</option>
+              <option value="pilot" data-de="Pilot-Angebot" data-en="Pilot proposal">Pilot-Angebot</option>
+              <option value="demo" data-de="Plattform-Demo" data-en="Platform demo">Plattform-Demo</option>
+              <option value="other" data-de="Sonstiges" data-en="Other">Sonstiges</option>
+            </select></div>
+        </div>
+        <label for="c-message"><span lang="de">Nachricht</span><span lang="en">Message</span></label>
+        <textarea id="c-message" required></textarea>
+        <div class="error" id="c-error" role="alert"></div>
+        <div class="form-nav">
+          <span class="small" lang="de">Öffnet Ihr E-Mail-Programm mit der fertigen Nachricht.</span>
+          <span class="small" lang="en">Opens your email app with the message ready to send.</span>
+          <button type="submit" class="btn"><span lang="de">Senden</span><span lang="en">Send</span> →</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<script src="js/config.js"></script>
+<script src="js/site.js"></script>
+<script>
+  (function () {
+    var cfg = window.ECHAZ_CONFIG;
+    var form = document.getElementById("contact");
+    var topic = document.getElementById("c-topic");
+    var t = new URLSearchParams(location.search).get("topic");
+    if (t && topic.querySelector('option[value="' + t + '"]')) topic.value = t;
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var bad = Array.prototype.find.call(form.querySelectorAll("[required]"), function (el) { return !el.checkValidity(); });
+      if (bad) { document.getElementById("c-error").textContent = window.L("Bitte füllen Sie alle Pflichtfelder aus.", "Please complete all required fields."); bad.focus(); return; }
+      var v = function (id) { return document.getElementById(id).value.trim(); };
+      var body = ["Name: " + v("c-name"), "E-Mail: " + v("c-email"), "Unternehmen: " + (v("c-company") || "-"), "", v("c-message")].join("\n");
+      location.href = "mailto:" + cfg.email + "?subject=" + encodeURIComponent(topic.options[topic.selectedIndex].text + " – " + v("c-name")) +
+        "&body=" + encodeURIComponent(body);
+    });
+  })();
+</script>
+</body>
+</html>
