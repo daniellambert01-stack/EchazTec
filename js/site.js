@@ -1,7 +1,7 @@
-/* Shared behaviour for the EchazTec website and the SpeakUp platform:
+/* Shared behaviour for the Novalingua website and the Novalingua AI platform:
    language switch, header, footer, external links and scroll reveal. */
 (function () {
-  var cfg = window.ECHAZ_CONFIG || { LINKS: {} };
+  var cfg = window.NOVA_CONFIG || { LINKS: {} };
   var body = document.body;
   var base = body.getAttribute("data-base") || "";
   var page = body.getAttribute("data-page") || "";
@@ -11,15 +11,15 @@
   function storedLang() {
     var q = new URLSearchParams(location.search).get("lang");
     if (q === "de" || q === "en") return q;
-    try { return localStorage.getItem("echaz-lang") || "de"; } catch (e) { return "de"; }
+    try { return localStorage.getItem("nova-lang") || "de"; } catch (e) { return "de"; }
   }
-  window.ECHAZ_LANG = storedLang();
+  window.NOVA_LANG = storedLang();
 
   window.setLang = function (lang) {
-    window.ECHAZ_LANG = lang;
+    window.NOVA_LANG = lang;
     document.documentElement.setAttribute("data-lang", lang);
     document.documentElement.lang = lang;
-    try { localStorage.setItem("echaz-lang", lang); } catch (e) { /* storage unavailable */ }
+    try { localStorage.setItem("nova-lang", lang); } catch (e) { /* storage unavailable */ }
     // Attributes that cannot be switched with CSS
     document.querySelectorAll("[data-de-placeholder]").forEach(function (el) {
       el.placeholder = el.getAttribute("data-" + lang + "-placeholder") || "";
@@ -39,7 +39,7 @@
   };
 
   // Bilingual helper for strings built in JavaScript
-  window.L = function (de, en) { return window.ECHAZ_LANG === "en" ? en : de; };
+  window.L = function (de, en) { return window.NOVA_LANG === "en" ? en : de; };
   window.bi = function (de, en) { return '<span lang="de">' + de + '</span><span lang="en">' + en + "</span>"; };
   var bi = window.bi;
 
@@ -52,10 +52,10 @@
     { href: base + "index.html", de: "← Website", en: "← Website", id: "site" }
   ] : [
     { href: base + "courses.html", de: "Kurse", en: "Courses", id: "courses" },
-    { href: base + "solution.html", de: "SpeakUp", en: "SpeakUp", id: "solution" },
+    { href: base + "solution.html", de: "KI-Coach", en: "AI coach", id: "solution" },
+    { href: base + "executive.html", de: "Executive", en: "Executive", id: "executive" },
     { href: base + "process.html", de: "Ablauf", en: "Process", id: "process" },
     { href: base + "pricing.html", de: "Preise", en: "Pricing", id: "pricing" },
-    { href: base + "trust.html", de: "Datenschutz", en: "Privacy", id: "trust" },
     { href: base + "roadmap.html", de: "Roadmap", en: "Roadmap", id: "roadmap" },
     { href: base + "app/index.html", de: "Demo", en: "Demo", id: "app" },
     { href: base + "contact.html", de: "Kontakt", en: "Contact", id: "contact" }
@@ -69,7 +69,7 @@
   header.innerHTML =
     '<div class="container nav">' +
       '<a class="logo" href="' + base + 'index.html"><span class="logo-mark">' + markSvg + "</span>" +
-        "<span>EchazTec<small>" + (isApp ? "SpeakUp · " + bi("Plattform-Demo", "Platform demo") : bi("Sprachschule", "Language school")) + "</small></span></a>" +
+        "<span>Novalingua<small>" + (isApp ? "Novalingua AI · " + bi("Plattform-Demo", "Platform demo") : bi("Sprachschule", "Language school")) + "</small></span></a>" +
       '<ul class="nav-links" id="nav-links">' +
         NAV.map(function (n) {
           return '<li><a href="' + n.href + '"' + (n.id === page ? ' aria-current="page"' : "") + ">" + bi(n.de, n.en) + "</a></li>";
@@ -103,9 +103,9 @@
     footer.className = "site-footer";
     footer.innerHTML =
       '<div class="container"><div class="footer-grid">' +
-        '<div><a class="logo" href="' + base + 'index.html"><span class="logo-mark">' + markSvg + "</span><span>EchazTec</span></a>" +
-          '<p style="margin-top:16px;max-width:38ch">' + bi("Sprachschule für Berufstätige und Unternehmen: online, in Präsenz oder hybrid, mit dem SpeakUp KI-Sprachcoach.",
-            "Language school for professionals and companies: online, in person or hybrid, with the SpeakUp AI speaking coach.") + "</p>" +
+        '<div><a class="logo" href="' + base + 'index.html"><span class="logo-mark">' + markSvg + "</span><span>Novalingua</span></a>" +
+          '<p style="margin-top:16px;max-width:38ch">' + bi("Sprachschule für Berufstätige und Unternehmen: online, in Präsenz oder hybrid, mit Novalingua AI.",
+            "Language school for professionals and companies: online, in person or hybrid, with Novalingua AI.") + "</p>" +
           '<a class="btn btn--sm" data-link="discovery">' + bi("Gespräch buchen", "Book a call") + "</a></div>" +
         "<div><h4>" + bi("Ablauf", "Process") + "</h4><ul>" +
           '<li><a href="' + base + 'roadmap.html">01 ' + bi("Sprach-Roadmap", "Language Roadmap") + "</a></li>" +
@@ -114,20 +114,37 @@
           '<li><a href="' + base + 'process.html#pilot">04 ' + bi("Pilot &amp; Rollout", "Pilot &amp; rollout") + "</a></li>" +
           '<li><a href="' + base + 'process.html#care">05 ' + bi("Betreuung", "Ongoing care") + "</a></li>" +
         "</ul></div>" +
-        "<div><h4>EchazTec</h4><ul>" +
+        "<div><h4>Novalingua</h4><ul>" +
           NAV.map(function (n) { return '<li><a href="' + n.href + '">' + bi(n.de, n.en) + "</a></li>"; }).join("") +
+          '<li><a href="' + base + 'about.html">' + bi("Über uns", "About us") + "</a></li>" +
+          '<li><a href="' + base + 'trust.html">' + bi("Datenschutz &amp; KI", "Privacy &amp; AI") + "</a></li>" +
+          '<li><a href="' + base + 'book.html">' + bi("Buchen &amp; bezahlen", "Book &amp; pay") + "</a></li>" +
           '<li><a data-link="linkedin">LinkedIn</a></li>' +
         "</ul></div>" +
-      '</div><div class="footer-bottom"><span>© ' + new Date().getFullYear() + " EchazTec · Speak up. Get heard.</span>" +
+      '</div><div class="footer-bottom"><span>© ' + new Date().getFullYear() + " Novalingua · Speak up. Get heard.</span>" +
         '<a href="mailto:' + cfg.email + '">' + cfg.email + "</a></div></div>";
     body.appendChild(footer);
   }
 
+  // Executive Check results, reused to prefill booking links and the booking page
+  window.loadAssessment = function () {
+    try { return JSON.parse(localStorage.getItem("nova-check") || "null"); } catch (e) { return null; }
+  };
+  window.saveAssessment = function (data) {
+    try { localStorage.setItem("nova-check", JSON.stringify(data)); } catch (e) { /* storage unavailable */ }
+  };
+
   // ---------- Links ----------
   window.resolveLinks = function (root) {
     (root || document).querySelectorAll("[data-link]").forEach(function (el) {
-      var url = cfg.LINKS[el.getAttribute("data-link")];
+      var key = el.getAttribute("data-link");
+      var url = cfg.LINKS[key] || (key === "sessions" ? cfg.LINKS.discovery : "");
       if (url) {
+        // Calendly accepts name/email query parameters to prefill its booking form
+        var a = window.loadAssessment();
+        if (a && a.email && /calendly\.com/.test(url)) {
+          url += (url.indexOf("?") === -1 ? "?" : "&") + "name=" + encodeURIComponent(a.name || "") + "&email=" + encodeURIComponent(a.email);
+        }
         el.href = url;
         if (/^https?:/.test(url)) { el.target = "_blank"; el.rel = "noopener"; }
       } else {
@@ -151,6 +168,6 @@
     });
   }
 
-  window.setLang(window.ECHAZ_LANG);
+  window.setLang(window.NOVA_LANG);
   window.resolveLinks();
 })();

@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title data-de="Kontakt · EchazTec SpeakUp" data-en="Contact · EchazTec SpeakUp">Kontakt · EchazTec SpeakUp</title>
-  <meta name="description" content="Kontakt zu EchazTec: Erstgespräch, Pilot-Angebot oder Plattform-Demo für SpeakUp.">
+  <title data-de="Kontakt · Novalingua" data-en="Contact · Novalingua">Kontakt · Novalingua</title>
+  <meta name="description" content="Kontakt zu Novalingua: Erstgespräch, Pilot-Angebot oder Plattform-Demo für Novalingua AI.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/site.css">
-  <script>try{var l=new URLSearchParams(location.search).get("lang")||localStorage.getItem("echaz-lang");if(l==="en"||l==="de"){document.documentElement.setAttribute("data-lang",l);document.documentElement.lang=l}}catch(e){}</script>
+  <script>try{var l=new URLSearchParams(location.search).get("lang")||localStorage.getItem("nova-lang");if(l==="en"||l==="de"){document.documentElement.setAttribute("data-lang",l);document.documentElement.lang=l}}catch(e){}</script>
 </head>
 <body data-page="contact">
 
@@ -38,6 +38,8 @@
               <option value="discovery" data-de="Erstgespräch (30 Min.)" data-en="First call (30 min)">Erstgespräch (30 Min.)</option>
               <option value="pilot" data-de="Pilot-Angebot" data-en="Pilot proposal">Pilot-Angebot</option>
               <option value="demo" data-de="Plattform-Demo" data-en="Platform demo">Plattform-Demo</option>
+              <option value="invoice" data-de="Rechnung / Überweisung" data-en="Invoice / bank transfer">Rechnung / Überweisung</option>
+              <option value="executive" data-de="Novalingua Executive" data-en="Novalingua Executive">Novalingua Executive</option>
               <option value="other" data-de="Sonstiges" data-en="Other">Sonstiges</option>
             </select></div>
         </div>
@@ -58,10 +60,11 @@
 <script src="js/site.js"></script>
 <script>
   (function () {
-    var cfg = window.ECHAZ_CONFIG;
+    var cfg = window.NOVA_CONFIG;
     var form = document.getElementById("contact");
     var topic = document.getElementById("c-topic");
     var t = new URLSearchParams(location.search).get("topic");
+    t = { sessions: "discovery", stripe: "invoice", paypal: "invoice" }[t] || t;
     if (t && topic.querySelector('option[value="' + t + '"]')) topic.value = t;
     form.addEventListener("submit", function (e) {
       e.preventDefault();

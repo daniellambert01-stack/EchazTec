@@ -1,4 +1,4 @@
-/* EchazTec / SpeakUp — visual language taken from the SpeakUp concept deck:
+/* Novalingua / Novalingua AI — visual language taken from the Novalingua AI concept deck:
    warm cream, deep aubergine ink, orange accent, teal/coral/yellow/purple
    as secondary colours, heavy Inter headlines and soft white cards. */
 :root {
@@ -254,6 +254,15 @@ textarea { min-height: 110px; resize: vertical; }
 .form-step.active { display: block; }
 .form-nav { display: flex; justify-content: space-between; gap: 12px; margin-top: 30px; flex-wrap: wrap; }
 .error { color: var(--coral); font-weight: 600; min-height: 1.3em; margin-top: 12px; }
+
+/* Executive Check */
+.quiz-q { margin-top: 22px; }
+.quiz-q > p { font-weight: 700; margin-bottom: 8px; }
+.quiz-q > p b { color: var(--orange); margin-right: 8px; }
+.kv { display: grid; grid-template-columns: 170px 1fr; margin: 0; }
+.kv dt, .kv dd { padding: 10px 0; border-bottom: 1px solid var(--cream-2); margin: 0; }
+.kv dt { font-size: .85rem; color: var(--muted); font-weight: 700; }
+@media (max-width: 560px) { .kv { grid-template-columns: 1fr; } .kv dt { border: 0; padding-bottom: 0; } }
 
 /* Plan calculator */
 .calc { display: grid; grid-template-columns: 1.3fr 1fr; gap: 24px; align-items: start; }

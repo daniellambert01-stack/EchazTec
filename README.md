@@ -1,8 +1,10 @@
-# EchazTec · SpeakUp
+# Novalingua
 
 **Speak up. Get heard.** Live-Training + KI-Sprachcoach.
 
-Company website and a working platform prototype, based on the concept "SpeakUp – EchazTec (Entwurf v10)". Static HTML, CSS and JavaScript with no build step. German with an English toggle (DE/EN, top right).
+Company website and a working platform prototype, based on the concept deck "SpeakUp – EchazTec (Entwurf v10)". Static HTML, CSS and JavaScript with no build step. German with an English toggle (DE/EN, top right).
+
+One company, three offers: **Novalingua** (language coaching), **Novalingua AI** (AI practice platform) and **Novalingua Executive** (premium coaching for leaders).
 
 ## Website
 
@@ -13,6 +15,10 @@ Company website and a working platform prototype, based on the concept "SpeakUp 
 | `process.html` | 6 steps from Language Roadmap to ongoing care, learner timeline, "one month to the big day", timeline chart, KPI pyramid |
 | `trust.html` | GDPR, EU AI Act, copyright, works council, who sees what, risk register |
 | `roadmap.html` | Free **Sprach-Roadmap** (like GPC's AI Roadmap): AI strategy type, recommended pilot, 30/60/90-day plan |
+| `executive.html` | **Novalingua Executive**: premium 1:1 coaching for leaders (executive coaching, presentation & pitch, interview & career), €65 per 45 min |
+| `executive-check.html` | Personal Executive Check (Test 1): estimated level, programme recommendation, 30/60/90-day plan; answers go to Gmail |
+| `book.html` | Booking & payment: Calendly calendar (embedded once `LINKS.discovery` is set), card/Apple Pay/Google Pay/SEPA via Stripe, PayPal, bank transfer on invoice |
+| `about.html` | About Novalingua and the founder |
 | `courses.html` | Language school: online, in-person and hybrid formats; group, 1:1 and company courses; languages and CEFR levels |
 | `pricing.html` | Plan calculator: one-time start-up costs (user training + platform set-up) plus running costs by plan. Rates are set in `js/config.js` (`PRICING`) |
 | `contact.html` | Contact form (opens a pre-filled email) |

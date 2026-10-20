@@ -1,7 +1,7 @@
 /* Sprach-Roadmap: a short company self-assessment that returns an AI strategy
    type, a recommended pilot and a 30/60/90-day plan. */
 (function () {
-  var cfg = window.ECHAZ_CONFIG;
+  var cfg = window.NOVA_CONFIG;
   var L = window.L;
   var form = document.getElementById("roadmap");
   var steps = form.querySelectorAll(".form-step");
@@ -15,7 +15,7 @@
   function label() {
     var s = steps[current];
     document.getElementById("progress-label").textContent =
-      L("Abschnitt ", "Section ") + (current + 1) + L(" von ", " of ") + steps.length + " · " + s.getAttribute("data-" + window.ECHAZ_LANG);
+      L("Abschnitt ", "Section ") + (current + 1) + L(" von ", " of ") + steps.length + " · " + s.getAttribute("data-" + window.NOVA_LANG);
     next.textContent = current === steps.length - 1 ? L("Roadmap anzeigen →", "Show my Roadmap →") : L("Weiter →", "Continue →");
   }
 
@@ -48,7 +48,7 @@
     return Array.prototype.map.call(form.querySelectorAll("input[name=" + name + "]:checked"), function (x) { return x.value; });
   }
 
-  // Strategy types from the maturity model used in the SpeakUp concept
+  // Strategy types from the maturity model used in the Novalingua AI concept
   var TYPES = [
     { id: "pragmatic", de: "Pragmatisch", en: "Pragmatic",
       tde: "Sie starten mit KI. Ein kleiner, klar abgegrenzter Pilot mit schnellem Nutzen schafft Vertrauen und erste Daten.",
@@ -60,8 +60,8 @@
       tde: "Ziele und Daten sind da. Jetzt geht es darum, die Nutzung in die Breite zu tragen: Pilot kurz halten, Rollout früh planen.",
       ten: "Goals and data are in place. Now it's about spreading usage: keep the pilot short and plan rollout early." },
     { id: "steady", de: "Stetig", en: "Steady",
-      tde: "KI ist bei Ihnen etabliert. SpeakUp lässt sich direkt in mehreren Bereichen einführen, mit Fokus auf Qualität und Betreuung.",
-      ten: "AI is established in your company. SpeakUp can be introduced in several departments directly, focusing on quality and ongoing care." }
+      tde: "KI ist bei Ihnen etabliert. Novalingua AI lässt sich direkt in mehreren Bereichen einführen, mit Fokus auf Qualität und Betreuung.",
+      ten: "AI is established in your company. Novalingua AI can be introduced in several departments directly, focusing on quality and ongoing care." }
   ];
   var DEPT = { sales: ["Vertrieb", "Sales"], eng: ["Engineering", "Engineering"], finance: ["Controlling", "Finance"],
     mgmt: ["Führung", "Management"], service: ["Service", "Service"], purchasing: ["Einkauf", "Purchasing"] };
@@ -86,7 +86,7 @@
     var d = lastResult;
     if (!d) return;
     var t = TYPES[d.type];
-    var lang = window.ECHAZ_LANG;
+    var lang = window.NOVA_LANG;
     document.getElementById("res-title").textContent = L("Roadmap für ", "Roadmap for ") + d.company;
     document.getElementById("res-types").innerHTML = TYPES.map(function (x, i) {
       return '<span class="pill" style="text-align:center;align-self:stretch;background:' + (i === d.type ? "var(--orange)" : "var(--cream-2)") +
@@ -150,8 +150,8 @@
         works_council: d.council, start: d.start, notes: d.notes || "-" })
     }).then(function (r) {
       if (!r.ok) throw new Error(r.status);
-      document.getElementById("res-status").textContent = L("Ihre Angaben wurden an EchazTec gesendet. Wir melden uns innerhalb eines Werktags.",
-        "Your answers have been sent to EchazTec. We'll get back to you within one working day.");
+      document.getElementById("res-status").textContent = L("Ihre Angaben wurden an Novalingua gesendet. Wir melden uns innerhalb eines Werktags.",
+        "Your answers have been sent to Novalingua. We'll get back to you within one working day.");
     }).catch(function () { /* the email button remains as the fallback */ });
   }
 

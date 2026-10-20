@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title data-de="KPI-Cockpit L&D · SpeakUp (Demo)" data-en="L&D KPI cockpit · SpeakUp (demo)">KPI-Cockpit L&amp;D · SpeakUp (Demo)</title>
+  <title data-de="KPI-Cockpit L&D · Novalingua AI (Demo)" data-en="L&D KPI cockpit · Novalingua AI (demo)">KPI-Cockpit L&amp;D · Novalingua AI (Demo)</title>
   <meta name="robots" content="noindex">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/site.css">
   <link rel="stylesheet" href="app.css">
-  <script>try{var l=new URLSearchParams(location.search).get("lang")||localStorage.getItem("echaz-lang");if(l==="en"||l==="de"){document.documentElement.setAttribute("data-lang",l);document.documentElement.lang=l}}catch(e){}</script>
+  <script>try{var l=new URLSearchParams(location.search).get("lang")||localStorage.getItem("nova-lang");if(l==="en"||l==="de"){document.documentElement.setAttribute("data-lang",l);document.documentElement.lang=l}}catch(e){}</script>
 </head>
 <body data-page="insights" data-base="../" data-app>
 
@@ -66,11 +66,11 @@
 <script src="store.js"></script>
 <script>
 (function () {
-  var S = window.SpeakUp, L = window.L;
+  var S = window.NovaApp, L = window.L;
   function render() {
     var p = S.get().pilot;
     var h = p.hoursPerMonth[p.hoursPerMonth.length - 1], a = p.activeShare[p.activeShare.length - 1];
-    var fmt = function (n) { return n.toLocaleString(window.ECHAZ_LANG, { maximumFractionDigits: 1 }); };
+    var fmt = function (n) { return n.toLocaleString(window.NOVA_LANG, { maximumFractionDigits: 1 }); };
     document.getElementById("k-hours").textContent = fmt(h) + " h";
     document.getElementById("k-active").textContent = Math.round(a * 100) + " %";
     document.getElementById("k-sat").textContent = fmt(p.satisfaction) + " / 5";

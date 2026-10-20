@@ -3,9 +3,9 @@
  * LINKS, so each external address only needs changing here. A value of ""
  * falls back to the contact page.
  */
-window.ECHAZ_CONFIG = {
-  brand: "EchazTec",
-  product: "SpeakUp",
+window.NOVA_CONFIG = {
+  brand: "Novalingua",
+  product: "Novalingua AI",
   email: "daniel.lambert01@gmail.com",
 
   // Sprach-Roadmap answers are delivered to this Gmail inbox via FormSubmit.
@@ -13,9 +13,24 @@ window.ECHAZ_CONFIG = {
   formEndpoint: "https://formsubmit.co/ajax/daniel.lambert01@gmail.com",
 
   LINKS: {
-    // Free 30-minute discovery call (Calendly, Microsoft Bookings, ...)
+    // Calendly: free discovery call, e.g. "https://calendly.com/your-name/erstgespraech".
+    // When set, book.html shows the Calendly calendar directly on the page.
     discovery: "",
+    // Calendly event for paid sessions (optional; falls back to the discovery link)
+    sessions: "",
+    // Card payment incl. Apple Pay / Google Pay / SEPA: a Stripe Payment Link
+    stripe: "",
+    // PayPal: e.g. "https://paypal.me/your-name"
+    paypal: "",
     linkedin: "https://www.linkedin.com/in/daniel-p-lambert-8b853037"
+  },
+
+  // Programme names used by the personal Executive Check
+  PROGRAMMES: {
+    executive: "Novalingua Executive · 1:1 Coaching",
+    presentation: "Novalingua Executive · Presentation & Pitch",
+    corporate: "Novalingua · Team Training",
+    interview: "Novalingua Executive · Interview & Career"
   },
 
   // Rates for the plan calculator (EUR). Session prices are the school's price

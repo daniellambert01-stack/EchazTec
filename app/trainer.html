@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title data-de="Trainer-Cockpit · SpeakUp (Demo)" data-en="Trainer cockpit · SpeakUp (demo)">Trainer-Cockpit · SpeakUp (Demo)</title>
+  <title data-de="Trainer-Cockpit · Novalingua AI (Demo)" data-en="Trainer cockpit · Novalingua AI (demo)">Trainer-Cockpit · Novalingua AI (Demo)</title>
   <meta name="robots" content="noindex">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/site.css">
   <link rel="stylesheet" href="app.css">
-  <script>try{var l=new URLSearchParams(location.search).get("lang")||localStorage.getItem("echaz-lang");if(l==="en"||l==="de"){document.documentElement.setAttribute("data-lang",l);document.documentElement.lang=l}}catch(e){}</script>
+  <script>try{var l=new URLSearchParams(location.search).get("lang")||localStorage.getItem("nova-lang");if(l==="en"||l==="de"){document.documentElement.setAttribute("data-lang",l);document.documentElement.lang=l}}catch(e){}</script>
 </head>
 <body data-page="trainer" data-base="../" data-app>
 
@@ -53,12 +53,12 @@
 <script src="store.js"></script>
 <script>
 (function () {
-  var S = window.SpeakUp, L = window.L;
+  var S = window.NovaApp, L = window.L;
   function esc(t) { var d = document.createElement("div"); d.textContent = t; return d.innerHTML; }
   var lock = function (t) { return '<span class="locked">🔒 ' + t + "</span>"; };
 
   function render() {
-    var i = window.ECHAZ_LANG === "en" ? 1 : 0;
+    var i = window.NOVA_LANG === "en" ? 1 : 0;
     var all = S.get().sessions;
 
     // Recommendations from released topics and wishes
@@ -75,7 +75,7 @@
     document.getElementById("one").innerHTML = ones.length ? ones.map(function (s) {
       return "<li><div><b>" + S.PERSONAS[s.who].name + '</b><br><span class="small">' +
         (s.release.topic ? S.scenarioName(s.scenario) : L("Thema nicht freigegeben", "Topic not released")) + "</span></div>" +
-        '<span class="small">' + new Date(s.date).toLocaleDateString(window.ECHAZ_LANG) + "</span></li>";
+        '<span class="small">' + new Date(s.date).toLocaleDateString(window.NOVA_LANG) + "</span></li>";
     }).join("") : '<li class="small">' + L("Keine offenen Wünsche.", "No open requests.") + "</li>";
 
     document.getElementById("people").innerHTML = Object.keys(S.PERSONAS).map(function (k) {

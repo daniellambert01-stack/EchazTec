@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title data-de="Mein SpeakUp · Lernende (Demo)" data-en="My SpeakUp · Learner (demo)">Mein SpeakUp · Lernende (Demo)</title>
+  <title data-de="Mein Novalingua AI · Lernende (Demo)" data-en="My Novalingua AI · Learner (demo)">Mein Novalingua AI · Lernende (Demo)</title>
   <meta name="robots" content="noindex">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/site.css">
   <link rel="stylesheet" href="app.css">
-  <script>try{var l=new URLSearchParams(location.search).get("lang")||localStorage.getItem("echaz-lang");if(l==="en"||l==="de"){document.documentElement.setAttribute("data-lang",l);document.documentElement.lang=l}}catch(e){}</script>
+  <script>try{var l=new URLSearchParams(location.search).get("lang")||localStorage.getItem("nova-lang");if(l==="en"||l==="de"){document.documentElement.setAttribute("data-lang",l);document.documentElement.lang=l}}catch(e){}</script>
 </head>
 <body data-page="learner" data-base="../" data-app>
 
@@ -72,11 +72,11 @@
 <script src="store.js"></script>
 <script>
 (function () {
-  var S = window.SpeakUp, L = window.L;
+  var S = window.NovaApp, L = window.L;
   var sel = document.getElementById("persona");
 
   function render() {
-    var lang = window.ECHAZ_LANG, i = lang === "en" ? 1 : 0;
+    var lang = window.NOVA_LANG, i = lang === "en" ? 1 : 0;
     var id = S.me(), p = S.PERSONAS[id], st = S.get();
     sel.innerHTML = Object.keys(S.PERSONAS).map(function (k) {
       var q = S.PERSONAS[k];
@@ -129,7 +129,7 @@
     var labels = { topic: L("Thema", "Topic"), time: L("Übungszeit", "Practice time"), scores: L("Werte", "Scores"),
       wish: L("Wunschthema", "Requested topic"), oneToOne: L("1:1-Wunsch", "1:1 request"), transcript: L("Transkript", "Transcript") };
     document.getElementById("history").innerHTML = hist.length ? hist.map(function (s) {
-      return "<li><div><b>" + S.scenarioName(s.scenario) + '</b><br><span class="small">' + new Date(s.date).toLocaleDateString(window.ECHAZ_LANG) +
+      return "<li><div><b>" + S.scenarioName(s.scenario) + '</b><br><span class="small">' + new Date(s.date).toLocaleDateString(window.NOVA_LANG) +
         " · " + s.minutes + " " + L("Min.", "min") + "</span></div><div class=\"small\">" +
         L("Flüssigkeit ", "Fluency ") + s.scores.fluency + "/5 · " + L("Fachwörter ", "Vocabulary ") + s.scores.vocab + "/5</div>" +
         '<div class="chips">' + Object.keys(labels).map(function (k) {

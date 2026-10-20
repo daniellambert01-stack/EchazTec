@@ -1,8 +1,8 @@
-/* SpeakUp exercise: the 4 steps of the AI coach.
+/* Novalingua AI exercise: the 4 steps of the AI coach.
    1 set a goal · 2 speak (Web Speech API, typing as fallback) · 3 rule-based
    feedback · 4 the learner chooses what the trainer may see. */
 (function () {
-  var S = window.SpeakUp, L = window.L;
+  var S = window.NovaApp, L = window.L;
   var params = new URLSearchParams(location.search);
   var scenarioId = S.SCENARIOS[params.get("s")] ? params.get("s") : S.PERSONAS[S.me()].goal.scenario;
   var sc, turn = 0, answers = [], startedAt = 0, result = null;
@@ -24,14 +24,14 @@
   }
 
   function fillScenarios() {
-    var lang = window.ECHAZ_LANG;
+    var lang = window.NOVA_LANG;
     sel.innerHTML = Object.keys(S.SCENARIOS).map(function (k) {
       return '<option value="' + k + '"' + (k === scenarioId ? " selected" : "") + ">" + S.SCENARIOS[k][lang] + "</option>";
     }).join("");
     document.getElementById("title").textContent = S.SCENARIOS[scenarioId][lang];
   }
   sel.addEventListener("change", function () { scenarioId = sel.value; fillScenarios(); });
-  document.getElementById("goal").value = S.PERSONAS[S.me()].goal.scenario === scenarioId ? S.PERSONAS[S.me()].goal[window.ECHAZ_LANG] : "";
+  document.getElementById("goal").value = S.PERSONAS[S.me()].goal.scenario === scenarioId ? S.PERSONAS[S.me()].goal[window.NOVA_LANG] : "";
 
   // ---------- Speech output ----------
   var synth = window.speechSynthesis;

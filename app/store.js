@@ -1,4 +1,4 @@
-/* SpeakUp demo data. Everything is kept in this browser's localStorage and
+/* Novalingua AI demo data. Everything is kept in this browser's localStorage and
    never leaves the device; the "Reset demo" button restores the seed data. */
 (function () {
   var KEY = "speakup-demo-v1";
@@ -131,7 +131,7 @@
 
   var state = load();
 
-  window.SpeakUp = {
+  window.NovaApp = {
     PERSONAS: PERSONAS,
     SCENARIOS: SCENARIOS,
     get: function () { return state; },

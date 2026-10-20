@@ -1,7 +1,7 @@
 /* Plan calculator: one-time start-up costs plus running costs that depend on
-   the plan. Rates come from ECHAZ_CONFIG.PRICING. */
+   the plan. Rates come from NOVA_CONFIG.PRICING. */
 (function () {
-  var cfg = window.ECHAZ_CONFIG, P = cfg.PRICING, L = window.L;
+  var cfg = window.NOVA_CONFIG, P = cfg.PRICING, L = window.L;
   var form = document.getElementById("calc");
   var $ = function (id) { return document.getElementById(id); };
 
@@ -13,7 +13,7 @@
   };
 
   function eur(n) {
-    return n.toLocaleString(window.ECHAZ_LANG === "en" ? "en-GB" : "de-DE", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
+    return n.toLocaleString(window.NOVA_LANG === "en" ? "en-GB" : "de-DE", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
   }
   function num(id, max) { var v = Math.max(0, Math.round(Number($(id).value) || 0)); return Math.min(v, max || v); }
 
@@ -73,12 +73,12 @@
     $("pp").textContent = eur(total / (people * months));
 
     var summary = [
-      "Plan-Rechner EchazTec", "",
+      "Plan-Rechner Novalingua", "",
       "Format: " + format, "Gruppe: " + g + " Personen, " + gs + " Termine/Monat", "1:1" + (exec ? " (Executive)" : "") + ": " + o + " Personen, " + os + " Termine/Monat",
       "Dauer je Termin: " + len45 + " Min.", "KI-Lizenzen: " + ai, "Laufzeit: " + months + " Monate",
       "Einmalig: " + eur(once), "Pro Monat: " + eur(monthly), "Gesamt: " + eur(total)
     ].join("\n");
-    $("request").href = "mailto:" + cfg.email + "?subject=" + encodeURIComponent(L("Angebotsanfrage", "Quote request") + " – SpeakUp") +
+    $("request").href = "mailto:" + cfg.email + "?subject=" + encodeURIComponent(L("Angebotsanfrage", "Quote request") + " – Novalingua AI") +
       "&body=" + encodeURIComponent(summary);
   }
 
