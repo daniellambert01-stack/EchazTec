@@ -51,11 +51,13 @@
     { href: base + "app/insights.html", de: "L&amp;D (anonym)", en: "L&amp;D (anonymous)", id: "insights" },
     { href: base + "index.html", de: "← Website", en: "← Website", id: "site" }
   ] : [
-    { href: base + "solution.html", de: "Lösung", en: "Solution", id: "solution" },
-    { href: base + "process.html", de: "Ablauf", en: "How it works", id: "process" },
-    { href: base + "trust.html", de: "Datenschutz &amp; KI", en: "Privacy &amp; AI", id: "trust" },
-    { href: base + "roadmap.html", de: "Sprach-Roadmap", en: "Language Roadmap", id: "roadmap" },
-    { href: base + "app/index.html", de: "Plattform-Demo", en: "Platform demo", id: "app" },
+    { href: base + "courses.html", de: "Kurse", en: "Courses", id: "courses" },
+    { href: base + "solution.html", de: "SpeakUp", en: "SpeakUp", id: "solution" },
+    { href: base + "process.html", de: "Ablauf", en: "Process", id: "process" },
+    { href: base + "pricing.html", de: "Preise", en: "Pricing", id: "pricing" },
+    { href: base + "trust.html", de: "Datenschutz", en: "Privacy", id: "trust" },
+    { href: base + "roadmap.html", de: "Roadmap", en: "Roadmap", id: "roadmap" },
+    { href: base + "app/index.html", de: "Demo", en: "Demo", id: "app" },
     { href: base + "contact.html", de: "Kontakt", en: "Contact", id: "contact" }
   ];
 
@@ -67,7 +69,7 @@
   header.innerHTML =
     '<div class="container nav">' +
       '<a class="logo" href="' + base + 'index.html"><span class="logo-mark">' + markSvg + "</span>" +
-        "<span>EchazTec<small>SpeakUp" + (isApp ? " · " + bi("Plattform-Demo", "Platform demo") : "") + "</small></span></a>" +
+        "<span>EchazTec<small>" + (isApp ? "SpeakUp · " + bi("Plattform-Demo", "Platform demo") : bi("Sprachschule", "Language school")) + "</small></span></a>" +
       '<ul class="nav-links" id="nav-links">' +
         NAV.map(function (n) {
           return '<li><a href="' + n.href + '"' + (n.id === page ? ' aria-current="page"' : "") + ">" + bi(n.de, n.en) + "</a></li>";
@@ -102,8 +104,8 @@
     footer.innerHTML =
       '<div class="container"><div class="footer-grid">' +
         '<div><a class="logo" href="' + base + 'index.html"><span class="logo-mark">' + markSvg + "</span><span>EchazTec</span></a>" +
-          '<p style="margin-top:16px;max-width:38ch">' + bi("SpeakUp: Live-Training + KI-Sprachcoach für Teams, die international sprechen.",
-            "SpeakUp: live training + AI speaking coach for teams who work internationally.") + "</p>" +
+          '<p style="margin-top:16px;max-width:38ch">' + bi("Sprachschule für Berufstätige und Unternehmen: online, in Präsenz oder hybrid, mit dem SpeakUp KI-Sprachcoach.",
+            "Language school for professionals and companies: online, in person or hybrid, with the SpeakUp AI speaking coach.") + "</p>" +
           '<a class="btn btn--sm" data-link="discovery">' + bi("Gespräch buchen", "Book a call") + "</a></div>" +
         "<div><h4>" + bi("Ablauf", "Process") + "</h4><ul>" +
           '<li><a href="' + base + 'roadmap.html">01 ' + bi("Sprach-Roadmap", "Language Roadmap") + "</a></li>" +

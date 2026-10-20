@@ -132,6 +132,7 @@
     document.getElementById("res-email").href = "mailto:" + cfg.email + "?subject=" + encodeURIComponent("Sprach-Roadmap: " + d.company) +
       "&body=" + encodeURIComponent(body);
 
+    document.getElementById("res-price").href = "pricing.html?n=" + d.pilotSize;
     form.hidden = true;
     var res = document.getElementById("results");
     res.hidden = false;

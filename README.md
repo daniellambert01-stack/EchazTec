@@ -13,6 +13,8 @@ Company website and a working platform prototype, based on the concept "SpeakUp 
 | `process.html` | 6 steps from Language Roadmap to ongoing care, learner timeline, "one month to the big day", timeline chart, KPI pyramid |
 | `trust.html` | GDPR, EU AI Act, copyright, works council, who sees what, risk register |
 | `roadmap.html` | Free **Sprach-Roadmap** (like GPC's AI Roadmap): AI strategy type, recommended pilot, 30/60/90-day plan |
+| `courses.html` | Language school: online, in-person and hybrid formats; group, 1:1 and company courses; languages and CEFR levels |
+| `pricing.html` | Plan calculator: one-time start-up costs (user training + platform set-up) plus running costs by plan. Rates are set in `js/config.js` (`PRICING`) |
 | `contact.html` | Contact form (opens a pre-filled email) |
 
 ## Platform prototype (`app/`)
@@ -31,4 +33,4 @@ All demo data lives in the browser's `localStorage`; nothing is sent anywhere. "
 
 ## Configuration
 
-`js/config.js`: contact email, the discovery-call booking link (`LINKS.discovery`), and `formEndpoint` for receiving Roadmap answers automatically (leave it empty until it's approved).
+`js/config.js`: contact email, the discovery-call booking link (`LINKS.discovery`), `formEndpoint` (Roadmap answers go to Gmail via FormSubmit; the first submission triggers a one-time activation email), and the `PRICING` rates for the calculator.
