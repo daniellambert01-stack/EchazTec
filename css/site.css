@@ -125,6 +125,8 @@ p { margin: 0 0 1em; }
   .blob--teal { width: 100px; height: 100px; right: 40%; top: -60px; }
 }
 
+@media (min-width: 901px) { .hero-grid--about { grid-template-columns: .8fr 1.2fr; } }
+
 /* ---------- Cards and grids ---------- */
 .grid { display: grid; gap: 20px; }
 .g2 { grid-template-columns: repeat(2, 1fr); }
