@@ -18,16 +18,17 @@ window.ECHAZ_CONFIG = {
     linkedin: "https://www.linkedin.com/in/daniel-p-lambert-8b853037"
   },
 
-  // Rates for the plan calculator (EUR). Defaults come from the SpeakUp concept
-  // deck and are indicative; adjust them to your real price list.
+  // Rates for the plan calculator (EUR). Session prices are the school's price
+  // list; the support and platform fees come from the SpeakUp concept deck.
   PRICING: {
     groupBase: 55,        // group session of 45 min: first person
-    groupPerExtra: 5,     // each additional person in the group session
-    oneToOne: 55,         // 1:1 session of 45 min
+    groupPerExtra: 7.5,   // each additional person in the group session
+    oneToOne: 60,         // 1:1 session of 45 min
+    oneToOneExec: 65,     // executive 1:1 session of 45 min
     aiLicence: 30,        // AI coach licence per person per month
     evaluation: 220,      // monthly trainer evaluation (cockpit)
     checkIns: 110,        // check-ins in M1, M3 and M6, spread per month
-    kickoff: 440,         // one-time: kick-off & user training (how to use the AI coach)
+    kickoff: 440,         // one-time: kick-off & user training (only charged when the AI coach is used)
     setup: 2000,          // one-time: setting up the AI platform for a company
     setupFrom: 5,         // the set-up fee applies from this many AI licences (company plans)
     travel: 0             // per on-site session (in person / hybrid); 0 = by arrangement

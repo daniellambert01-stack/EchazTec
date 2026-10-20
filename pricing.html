@@ -23,6 +23,7 @@
       <p class="lead" lang="en">The only one-time costs are the start-up costs: training so everyone can use the AI coach confidently, and setting up the platform. Running costs depend on the plan you need.</p>
       <div class="btn-row" id="presets" style="margin-top:20px">
         <button type="button" class="btn btn--sm btn--ghost" data-preset="one">1:1</button>
+        <button type="button" class="btn btn--sm btn--ghost" data-preset="exec">Executive 1:1</button>
         <button type="button" class="btn btn--sm btn--ghost" data-preset="group"><span lang="de">Gruppenkurs</span><span lang="en">Group course</span></button>
         <button type="button" class="btn btn--sm btn--ghost" data-preset="pilot"><span lang="de">Firmen-Pilot · 12 Personen</span><span lang="en">Company pilot · 12 people</span></button>
       </div>
@@ -48,12 +49,17 @@
           <div><label for="oneSessions"><span lang="de">1:1-Termine pro Person/Monat</span><span lang="en">1:1 sessions per person/month</span></label><input type="number" id="oneSessions" min="0" max="16" value="4"></div>
         </div>
         <div class="row-2">
+          <div><label for="oneType"><span lang="de">Art des 1:1-Trainings</span><span lang="en">Type of 1:1 training</span></label>
+            <select id="oneType"><option value="std" data-de="Standard" data-en="Standard">Standard</option><option value="exec" data-de="Executive (Führungskräfte)" data-en="Executive (leadership)">Executive (Führungskräfte)</option></select></div>
+          <div></div>
+        </div>
+        <div class="row-2">
           <div><label for="length"><span lang="de">Dauer je Termin</span><span lang="en">Length per session</span></label>
             <select id="length"><option value="1" data-de="45 Minuten" data-en="45 minutes">45 Minuten</option><option value="2" data-de="90 Minuten" data-en="90 minutes">90 Minuten</option></select></div>
           <div><label for="months"><span lang="de">Laufzeit (Monate)</span><span lang="en">Duration (months)</span></label><input type="number" id="months" min="1" max="24" value="6"></div>
         </div>
         <div class="row-2">
-          <div><label for="ai"><span lang="de">KI-Coach-Lizenzen</span><span lang="en">AI coach licences</span></label><input type="number" id="ai" min="0" max="200" value="12"></div>
+          <div><label for="ai"><span lang="de">KI-Coach-Lizenzen</span><span lang="en">AI coach licences</span> <span class="small" lang="de">(0 = nur Unterricht, ohne Startkosten)</span><span class="small" lang="en">(0 = lessons only, no start-up costs)</span></label><input type="number" id="ai" min="0" max="200" value="12"></div>
           <div><label for="onsite"><span lang="de">Davon Termine vor Ort pro Monat</span><span lang="en">Of which on-site sessions per month</span></label><input type="number" id="onsite" min="0" max="32" value="0" disabled></div>
         </div>
         <span class="field-label"><span lang="de">Begleitung</span><span lang="en">Support</span></span>

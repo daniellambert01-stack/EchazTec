@@ -6,9 +6,10 @@
   var $ = function (id) { return document.getElementById(id); };
 
   var PRESETS = {
-    one: { format: "online", group: 0, groupSessions: 0, one: 1, oneSessions: 4, length: 1, months: 3, ai: 1, evaluation: false, checkins: false },
-    group: { format: "online", group: 6, groupSessions: 4, one: 0, oneSessions: 0, length: 2, months: 6, ai: 6, evaluation: true, checkins: false },
-    pilot: { format: "hybrid", group: 10, groupSessions: 8, one: 2, oneSessions: 4, length: 1, months: 6, ai: 12, evaluation: true, checkins: true, onsite: 2 }
+    one: { format: "online", group: 0, groupSessions: 0, one: 1, oneType: "std", oneSessions: 4, length: 1, months: 3, ai: 1, evaluation: false, checkins: false },
+    exec: { format: "hybrid", group: 0, groupSessions: 0, one: 1, oneType: "exec", oneSessions: 6, length: 1, months: 3, ai: 1, evaluation: false, checkins: false, onsite: 2 },
+    group: { format: "online", oneType: "std", group: 6, groupSessions: 4, one: 0, oneSessions: 0, length: 2, months: 6, ai: 6, evaluation: true, checkins: false },
+    pilot: { format: "hybrid", oneType: "exec", group: 10, groupSessions: 8, one: 2, oneSessions: 4, length: 1, months: 6, ai: 12, evaluation: true, checkins: true, onsite: 2 }
   };
 
   function eur(n) {
@@ -20,6 +21,7 @@
     form.querySelector('input[name=format][value="' + p.format + '"]').checked = true;
     ["group", "groupSessions", "one", "oneSessions", "months", "ai"].forEach(function (k) { $(k).value = p[k]; });
     $("length").value = String(p.length);
+    $("oneType").value = p.oneType || "std";
     $("evaluation").checked = p.evaluation; $("checkins").checked = p.checkins;
     $("onsite").value = p.onsite || 0;
     calc();
@@ -39,7 +41,8 @@
     if (format === "onsite") $("onsite").value = allSessions;
 
     var groupCost = g > 0 ? gs * len * (P.groupBase + P.groupPerExtra * (g - 1)) : 0;
-    var oneCost = o * os * len * P.oneToOne;
+    var exec = $("oneType").value === "exec";
+    var oneCost = o * os * len * (exec ? P.oneToOneExec : P.oneToOne);
     var aiCost = ai * P.aiLicence;
     var evalCost = $("evaluation").checked ? P.evaluation : 0;
     var checkCost = $("checkins").checked ? P.checkIns : 0;
@@ -54,11 +57,11 @@
     var len45 = len === 1 ? "45" : "90";
     $("once-lines").innerHTML = ai > 0
       ? line(L("Kick-off &amp; User-Training (KI-Coach)", "Kick-off &amp; user training (AI coach)"), P.kickoff) + (setup ? line(L("Einrichtung KI-Plattform", "AI platform set-up"), setup) : "")
-      : '<div class="sum-line"><span>' + L("Ohne KI-Coach keine Startkosten", "No start-up costs without the AI coach") + "</span><span>" + eur(0) + "</span></div>";
+      : '<div class="sum-line"><span>' + L("Nur Unterricht ohne KI-Coach: keine Startkosten", "Lessons only, without the AI coach: no start-up costs") + "</span><span>" + eur(0) + "</span></div>";
     $("once").textContent = eur(once);
     $("month-lines").innerHTML =
       (groupCost ? line(L("Gruppe: " + g + " Pers. · " + gs + " × " + len45 + " Min.", "Group: " + g + " people · " + gs + " × " + len45 + " min"), groupCost) : "") +
-      (oneCost ? line("1:1: " + o + " × " + os + " × " + len45 + L(" Min.", " min"), oneCost) : "") +
+      (oneCost ? line((exec ? "Executive " : "") + "1:1: " + o + " × " + os + " × " + len45 + L(" Min.", " min"), oneCost) : "") +
       (aiCost ? line(L("KI-Coach: " + ai + " Lizenzen", "AI coach: " + ai + " licences"), aiCost) : "") +
       (evalCost ? line(L("Trainer-Auswertung", "Trainer evaluation"), evalCost) : "") +
       (checkCost ? line(L("Begleittermine", "Check-ins"), checkCost) : "") +
@@ -71,7 +74,7 @@
 
     var summary = [
       "Plan-Rechner EchazTec", "",
-      "Format: " + format, "Gruppe: " + g + " Personen, " + gs + " Termine/Monat", "1:1: " + o + " Personen, " + os + " Termine/Monat",
+      "Format: " + format, "Gruppe: " + g + " Personen, " + gs + " Termine/Monat", "1:1" + (exec ? " (Executive)" : "") + ": " + o + " Personen, " + os + " Termine/Monat",
       "Dauer je Termin: " + len45 + " Min.", "KI-Lizenzen: " + ai, "Laufzeit: " + months + " Monate",
       "Einmalig: " + eur(once), "Pro Monat: " + eur(monthly), "Gesamt: " + eur(total)
     ].join("\n");
