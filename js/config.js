@@ -20,7 +20,8 @@ window.NOVA_CONFIG = {
     sessions: "",
     // Card payment incl. Apple Pay / Google Pay / SEPA: a Stripe Payment Link
     stripe: "",
-    // PayPal: e.g. "https://paypal.me/your-name"
+    // PayPal: optional direct link (e.g. a PayPal.Me link). Leave "" to let clients
+    // request a PayPal invoice through the contact form instead.
     paypal: "",
     linkedin: "https://www.linkedin.com/in/daniel-p-lambert-8b853037"
   },
