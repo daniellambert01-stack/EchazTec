@@ -15,7 +15,7 @@ window.NOVA_CONFIG = {
   LINKS: {
     // Calendly: free discovery call, e.g. "https://calendly.com/your-name/erstgespraech".
     // When set, book.html shows the Calendly calendar directly on the page.
-    discovery: "https://calendly.com/daniel-lambert01/erstgesrpach",
+    discovery: "https://calendly.com/daniel-lambert01/erstgespraech",
     // Calendly event for paid sessions (optional; falls back to the discovery link)
     sessions: "",
     // Card payment incl. Apple Pay / Google Pay / SEPA: a Stripe Payment Link
