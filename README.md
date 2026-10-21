@@ -6,7 +6,7 @@ Company website and a working platform prototype, based on the concept deck "Spe
 
 One company, three offers: **Novalingua** (language coaching), **Novalingua AI** (AI practice platform) and **Novalingua Executive** (premium coaching for leaders).
 
-**Live:** https://daniellambert01-stack.github.io/novalingua/
+**Live:** https://daniellambert01-stack.github.io/echaztec/
 
 ## Website
 
