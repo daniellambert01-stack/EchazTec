@@ -91,9 +91,9 @@
     intro();
     document.addEventListener("langchange", intro);
 
-    // Show the Calendly calendar inline when a Calendly link is configured
+    // Offer the Calendly calendar inline, loaded only after the visitor agrees (GDPR)
     var url = cfg.LINKS.sessions || cfg.LINKS.discovery;
-    if (url && /calendly\.com/.test(url)) {
+    function loadCalendly() {
       var box = document.getElementById("calendly");
       var embed = url + (url.indexOf("?") === -1 ? "?" : "&") + "hide_gdpr_banner=1";
       if (a && a.email) embed += "&name=" + encodeURIComponent(a.name || "") + "&email=" + encodeURIComponent(a.email);
@@ -105,6 +105,22 @@
       s.src = "https://assets.calendly.com/assets/external/widget.js";
       s.async = true;
       document.body.appendChild(s);
+    }
+    if (url && /calendly\.com/.test(url)) {
+      var fb = document.getElementById("calendar-fallback");
+      var consent = document.createElement("p");
+      consent.className = "small";
+      consent.innerHTML = window.bi(
+        'Der Kalender wird von Calendly (USA) geladen. Dabei werden Daten an Calendly übertragen – <a href="datenschutz.html">Datenschutz</a>.',
+        'The calendar is loaded from Calendly (USA), which transfers data to Calendly – <a href="datenschutz.html">privacy</a>.');
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "btn btn--ghost";
+      btn.style.marginLeft = "10px";
+      btn.innerHTML = window.bi("Kalender hier anzeigen", "Show calendar here");
+      btn.addEventListener("click", loadCalendly);
+      fb.appendChild(consent);
+      fb.querySelector("a.btn").after(btn);
     }
   })();
 </script>

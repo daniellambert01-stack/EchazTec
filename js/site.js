@@ -98,6 +98,13 @@
   window.addEventListener("scroll", function () { header.classList.toggle("scrolled", window.scrollY > 8); }, { passive: true });
 
   // ---------- Footer ----------
+  if (isApp) {
+    var mini = document.createElement("footer");
+    mini.className = "small";
+    mini.style.cssText = "text-align:center;padding:24px 16px 40px";
+    mini.innerHTML = '<a href="' + base + 'impressum.html">Impressum</a> · <a href="' + base + 'datenschutz.html">' + bi("Datenschutz", "Privacy") + "</a>";
+    body.appendChild(mini);
+  }
   if (!isApp) {
     var footer = document.createElement("footer");
     footer.className = "site-footer";
@@ -122,7 +129,7 @@
           '<li><a data-link="linkedin">LinkedIn</a></li>' +
         "</ul></div>" +
       '</div><div class="footer-bottom"><span>© ' + new Date().getFullYear() + " Novalingua · Speak up. Get heard.</span>" +
-        '<a href="mailto:' + cfg.email + '">' + cfg.email + "</a></div></div>";
+        '<span><a href="' + base + 'impressum.html">Impressum</a> · <a href="' + base + 'datenschutz.html">' + bi("Datenschutz", "Privacy") + '</a> · <a href="mailto:' + cfg.email + '">' + cfg.email + "</a></span></div></div>";
     body.appendChild(footer);
   }
 

@@ -19,6 +19,8 @@ One company, three offers: **Novalingua** (language coaching), **Novalingua AI**
 | `executive-check.html` | Personal Executive Check (Test 1): estimated level, programme recommendation, 30/60/90-day plan; answers go to Gmail |
 | `book.html` | Booking & payment: Calendly calendar (embedded once `LINKS.discovery` is set), card/Apple Pay/Google Pay/SEPA via Stripe, PayPal, bank transfer on invoice |
 | `about.html` | About Novalingua and the founder |
+| `impressum.html` | Legal notice (§ 5 DDG), German binding with English translation |
+| `datenschutz.html` | Privacy policy (GDPR): hosting, email, forms, Calendly (click-to-load), Zoom, PayPal, demo storage, browser speech recognition |
 | `courses.html` | Language school: online, in-person and hybrid formats; group, 1:1 and company courses; languages and CEFR levels |
 | `pricing.html` | Plan calculator: one-time start-up costs (user training + platform set-up) plus running costs by plan. Rates are set in `js/config.js` (`PRICING`) |
 | `contact.html` | Contact form (opens a pre-filled email) |
