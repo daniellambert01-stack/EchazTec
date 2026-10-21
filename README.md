@@ -6,7 +6,7 @@ Company website and a working platform prototype, based on the concept deck "Spe
 
 One company, three offers: **Novalingua** (language coaching), **Novalingua AI** (AI practice platform) and **Novalingua Executive** (premium coaching for leaders).
 
-**Live:** https://www.novalingua.org (custom domain via the `CNAME` file; DNS at IONOS)
+**Live:** https://daniellambert01-stack.github.io/novalingua/
 
 ## Website
 
